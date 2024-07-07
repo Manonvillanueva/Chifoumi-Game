@@ -1,0 +1,51 @@
+@font-face {
+  font-family: Roboto-Regular;
+  src: url(./fonts/Roboto-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto-Regular;
+}
+
+body {
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 70px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.52);
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btns {
+  font-size: 50px;
+  margin: 20px;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
+}
+
+.btns:hover {
+  cursor: pointer;
+  /* border: 1px solid rgb(224, 83, 64); */
+  scale: 1.1;
+  transition: 0.5s ease-in-out;
+  box-shadow: 0 0 13px 4px rgb(224, 83, 64);
+  border-radius: 4px;
+}
+
+/* METTRE LA FLECHE EN ORANGE ET QU'ELLE FASSE DES MOUVEMENTS DU HAUT VERS LE BAS  */
+/* METTRE PIERRE FEUILLE CISEAUX EN LETTRE BATONS JAPONAIS  */
+/* SURLIGNER FAITES UN CHOIX , SURLIGNER EN ORANGE  */

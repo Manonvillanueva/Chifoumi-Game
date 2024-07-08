@@ -1,9 +1,7 @@
 // ---------------
 // VARIABLES
 // ----------
-const btns = document.getElementsByClassName("btns");
-// -> to use forEach
-const btnsArray = [...btns];
+const btns = document.querySelectorAll(".btns");
 
 // ---------------
 // VALUE OF PC CHOICE thanks to random
@@ -58,7 +56,7 @@ const score = () => {
 // ---------------
 // EVENT TO LAUNCH THE GAME
 // ----------
-btnsArray.forEach((btn) => {
+btns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const userChoice = e.target.id;
     const pcChoice = randomChifoumi();

@@ -4,7 +4,7 @@
 const btns = document.querySelectorAll(".btns");
 
 // ---------------
-// VALUE OF PC CHOICE thanks to random
+// GENERATE A NUMBER (0-2) with Math random to assign it to the pcChoice const
 // ----------
 const randomChifoumi = () => {
   const random = Math.ceil(Math.random() * 3);
@@ -26,15 +26,16 @@ const randomChifoumi = () => {
 const gameplay = (pcChoice, userChoice) => {
   const message = document.getElementById("message");
   if (pcChoice === userChoice) {
-    return (message.textContent = "égalité");
+    return (message.textContent = "Match Nul");
   } else if (pcChoice === "pierre") {
     message.textContent =
-      userChoice === "feuille" ? "USERVICTORY" : "PCVICTORY";
+      userChoice === "feuille" ? "BRAVO c'est Gagné" : "OUPS ... Perdu";
   } else if (pcChoice === "feuille") {
     message.textContent =
-      userChoice === "ciseaux" ? "USERVICTORY" : "PCVICTORY";
+      userChoice === "ciseaux" ? "BRAVO c'est Gagné" : "OUPS ... Perdu";
   } else if (pcChoice === "ciseaux") {
-    message.textContent = userChoice === "pierre" ? "USERVICTORY" : "PCVICTORY";
+    message.textContent =
+      userChoice === "pierre" ? "BRAVO c'est Gagné" : "OUPS ... Perdu";
   }
 };
 
@@ -42,26 +43,52 @@ const gameplay = (pcChoice, userChoice) => {
 // SCORE UPDATE
 // ----------
 const score = () => {
-  if (message.textContent === "égalité") {
-    console.log("coucou");
+  if (message.textContent === "Match Nul") {
+    message.style.color = "#E48AB0";
   }
-  if (message.textContent.includes("PC")) {
-    console.log("PCWIN");
+  if (message.textContent.includes("Perdu")) {
+    pcScoreDisplay.textContent++;
+    message.style.color = "#F6AA56";
   }
-  if (message.textContent.includes("USER")) {
-    console.log("USERWIN");
+  if (message.textContent.includes("Gagné")) {
+    userScoreDisplay.textContent++;
+    message.style.color = "#c4e93a";
   }
 };
 
 // ---------------
 // EVENT TO LAUNCH THE GAME
+// => extract the user's choice with the button's id
 // ----------
 btns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const userChoice = e.target.id;
     const pcChoice = randomChifoumi();
     gameplay(pcChoice, userChoice);
-    console.log(pcChoice, userChoice);
     score();
+    gameMessage.textContent = `Vous avez joué "${userChoice.toUpperCase()}" et l'ordinateur a joué "${pcChoice.toUpperCase()}"`;
+
+    // => after the user's choice, the btns become disabled
+    btns.forEach((btn) => {
+      btn.disabled = true;
+      btn.classList.add("hoverNone");
+    });
+
+    // => create new button each round ("btnContinue")
+    const btnContinue = document.createElement("button");
+    btnContinue.textContent = "Continuer";
+    btnContinue.id = "btnContinue";
+    gameContainer.appendChild(btnContinue);
+
+    // EVENT btnContinue
+    btnContinue.addEventListener("click", () => {
+      btnContinue.remove();
+      btns.forEach((btn) => {
+        btn.disabled = false;
+        btn.classList.remove("hoverNone");
+      });
+      message.textContent = "";
+      gameMessage.textContent = "";
+    });
   });
 });

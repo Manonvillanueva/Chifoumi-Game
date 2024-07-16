@@ -1,13 +1,13 @@
 @font-face {
-  font-family: Roboto-Regular;
-  src: url(./fonts/Roboto-Regular.ttf);
+  font-family: Montserrat;
+  src: url(./fonts/Montserrat-VariableFont_wght.ttf);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Roboto-Regular;
+  font-family: Montserrat;
 }
 
 body {
@@ -17,16 +17,31 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: url(./img/bg.jpg) center/cover;
 }
 
 h1 {
+  color: rgb(255, 253, 253);
   font-size: 70px;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.52);
 }
 
 .score {
+  color: #efd3b4;
+  border: 1px dashed white;
+}
+
+h2 {
+  color: #a6d6f6;
+}
+
+.score {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.score p {
+  font-size: 20px;
 }
 
 .btns {
@@ -39,13 +54,43 @@ h1 {
 
 .btns:hover {
   cursor: pointer;
-  /* border: 1px solid rgb(224, 83, 64); */
   scale: 1.1;
   transition: 0.5s ease-in-out;
-  box-shadow: 0 0 13px 4px rgb(224, 83, 64);
+  box-shadow: 0 0 13px 4px rgb(251, 250, 250);
   border-radius: 4px;
 }
 
+.hoverNone:hover {
+  box-shadow: none;
+  scale: none;
+}
+
+#message {
+  color: #c4e93a;
+  /* text-shadow: 1px 1px 5px #c4e93a; */
+  font-size: 28px;
+}
+
+#gameMessage {
+  padding: 10px;
+  color: rgb(253, 244, 244);
+  font-size: 20px;
+}
+
+#btnContinue {
+  padding: 5px 10px;
+  font-size: 30px;
+  background: white;
+  color: #4e56ef;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#btnContinue:hover {
+  scale: 1.1;
+  transition: 0.3s ease-in-out;
+}
+
 /* METTRE LA FLECHE EN ORANGE ET QU'ELLE FASSE DES MOUVEMENTS DU HAUT VERS LE BAS  */
-/* METTRE PIERRE FEUILLE CISEAUX EN LETTRE BATONS JAPONAIS  */
 /* SURLIGNER FAITES UN CHOIX , SURLIGNER EN ORANGE  */
